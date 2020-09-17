@@ -1,4 +1,4 @@
-## Testng-Cucumber-
+## Testng-Cucumber
 This is demo code bootstrap code with basic happy path test automation
 ## Features
 * The test scenarious  should run successfully on **Chrome** as defined in the **config.properties** file.
