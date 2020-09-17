@@ -1,7 +1,7 @@
 ## This is demo bootstrap code with basic happy path test automation
 
 ## Features
-* The test scenarious  should run successfully on **Chrome** as defined in the **config.properties** file.
+* The test scenarious  should run successfully on **Chrome** or **Firefox** as defined in the **config.properties** file.
 * Support of different operation systems and browsers. The drivers are located at resources/drivers/.
 * TestNG Annotations/hooks like "BeforeSuite", "AfterClass", "AfterMethod" etc.
 * Upon test failure screenshots are created in the /screenshots directory.
