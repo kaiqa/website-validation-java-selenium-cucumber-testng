@@ -5,8 +5,7 @@ This is demo code bootstrap code with basic happy path test automation
 * Support of different operation systems and browsers. The drivers are located at resources/drivers/.
 * TestNG Annotations/hooks like "BeforeSuite", "AfterClass", "AfterMethod" etc.
 * Upon test failure screenshots are created in the /screenshots directory.
-* Reporting of test execution can be found at /target/cucumber-html-reports/overview-features.html
- ![report1](./images/report-pass-fail.png)
+* Reporting of test execution
 
 ## Scenarios
  * 2.1 Sign up the website using a valid email
@@ -87,3 +86,9 @@ public class HomePage extends CucumberRunner {
         PageFactory.initElements(driver, this);
     }
 ```
+### Reporting
+```
+/target/cucumber-html-reports/overview-features.html
+```
+![report1](./images/report-pass-fail.png)
+ 
