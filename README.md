@@ -8,13 +8,11 @@
 * Reporting of test execution
 
 ## Scenarios
- * 2.1 Sign up the website using a valid email
+ * 2.1 Sign up using a valid email
  * 2.2 Log into the website
- * 2.3   Create first collection
+ * 2.3 Create first collection
  * 2.3.1 User should be logged in
- * 2.3.2 Press on Explore Rijksstudio (magnifying glass) on the top menu and
-                  search for “Johannes Vermmer”
-                  
+ * 2.3.2 Search for “Johannes Vermmer” on the top menu (magnifying glass)
  * 2.3.3 Press the heart icon displayed at the bottom of the “The Milkmaid” picture and
  add it to your first collection.
  *  2.4 Advanced search to look for a specific author
