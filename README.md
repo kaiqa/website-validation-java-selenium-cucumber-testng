@@ -23,7 +23,7 @@
 * Random user generator for the registration and login with a library like java-faker. https://github.com/DiUS/java-faker
 * Create additional classes for dialogs and forms.
 * Shorten xpath locators or avoid completely
-* Move functions from page classes to dedicated helper classes.
+* Move support functions from page classes to dedicated helper classes.
 * Dry step definition and no hard coded logic 
 
 ## Random issues
