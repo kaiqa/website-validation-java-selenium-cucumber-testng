@@ -31,8 +31,6 @@
 ## Random issues
 * The advanced search form loses field entries on backend connection failure and does not recover.
 * Test site unresponsive
-![report2](./images/down.png)
-
 
 
 ## To Get Started
@@ -41,7 +39,7 @@
 1. Java installed in the system
 2. Maven installed in the system
 
-#### Run Scripts
+#### Run Scenarios
 * Right click and run testng.xml with intellij
 * or run the following maven command
 
