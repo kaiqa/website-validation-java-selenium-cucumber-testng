@@ -1,5 +1,5 @@
-## Testng-Cucumber
-This is demo code bootstrap code with basic happy path test automation
+## This is demo bootstrap code with basic happy path test automation
+
 ## Features
 * The test scenarious  should run successfully on **Chrome** as defined in the **config.properties** file.
 * Support of different operation systems and browsers. The drivers are located at resources/drivers/.
@@ -22,7 +22,7 @@ This is demo code bootstrap code with basic happy path test automation
  * Snapshot on a failed test.
  
 ## Improvements: 
-* Random user generator for the registration and login Scenario with external library like java-faker. https://github.com/DiUS/java-faker
+* Random user generator for the registration and login with a library like java-faker. https://github.com/DiUS/java-faker
 * Create additional classes for dialogs and forms.
 * Shorten xpath locators or avoid completely
 * Move functions from page classes to dedicated helper classes.
