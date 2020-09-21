@@ -31,7 +31,7 @@ Feature: Login
     Then  I click on the modal dialog button my first collection
     And   I click on the x of the dialog first time added hint
     And   I click on the home page profile button
-    Then  I click on the button get started
+#   Then  I click on the button get started
     Then  I click on the collection item the milkmaid
     And   I click on the x of the dialog start the tour
     Then  I see the title and author of the milkmaid picture

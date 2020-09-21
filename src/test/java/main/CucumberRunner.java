@@ -9,7 +9,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
 import com.google.common.io.Files;
 
 import org.openqa.selenium.OutputType;
@@ -24,13 +23,28 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 
+
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 import helpers.ReportHelper;
 
-@CucumberOptions(strict = true, monochrome = true, features = "src/test/resources/features", glue = "stepdefinition", format = {"pretty","json:target/cucumber.json"}, tags = { "@Regression,@JunitScenario,@TestngScenario" })
+@CucumberOptions(
+		strict = true,
+		monochrome = true,
+		features = "src/test/resources/features",
+		glue = "stepdefinition",
+		format = {"pretty","json:target/cucumber.json"},
+		tags = { "@Regression,@JunitScenario,@TestngScenario" }
+		)
+
 @Parameters("browser")
 public class CucumberRunner extends AbstractTestNGCucumberTests {
+
+	@DataProvider(parallel = true)
+	public Object[][] scenarios() throws Exception {
+		return super.features();
+	}
+
 
 	public static Properties config = null;
 	public static WebDriver driver = null;
@@ -40,9 +54,6 @@ public class CucumberRunner extends AbstractTestNGCucumberTests {
 		FileInputStream ip = new FileInputStream(
 				System.getProperty("user.dir") + "//src//test//resources//config//config.properties");
 		config.load(ip);
-
-		String msg = System.getProperty("os.name");
-		System.out.println("The OS I am on: " + msg);
 	}
 
 	public void configureDriverPath() throws IOException {
@@ -66,14 +77,16 @@ public class CucumberRunner extends AbstractTestNGCucumberTests {
 		}
 	}
 
-	public void openBrowser() throws Exception {
+	public void openBrowser(String environment) throws Exception {
+		System.out.println("inside openbrowser passed as :- " + environment);
 		// loads the config options
 		LoadConfigProperty();
 		// configures the driver path
 		configureDriverPath();
-		if (config.getProperty("browserType").equals("firefox")) {
+
+		if (environment.equals("firefox")) {
 			driver = new FirefoxDriver();
-		} else if (config.getProperty("browserType").equals("chrome")) {
+		} else if (environment.equals("chrome")) {
 			ChromeOptions options = new ChromeOptions();
 			// options.addArguments("--headless");
 			options.addArguments("--disable-gpu");
@@ -82,6 +95,17 @@ public class CucumberRunner extends AbstractTestNGCucumberTests {
 			options.setExperimentalOption("useAutomationExtension", false);
 			driver = new ChromeDriver(options);
 		}
+//		if (config.getProperty("browserType").equals("firefox")) {
+//			driver = new FirefoxDriver();
+//		} else if (config.getProperty("browserType").equals("chrome")) {
+//			ChromeOptions options = new ChromeOptions();
+//			// options.addArguments("--headless");
+//			options.addArguments("--disable-gpu");
+//			options.addArguments("--no-sandbox");
+//			options.addArguments("--disable-dev-shm-usage");
+//			options.setExperimentalOption("useAutomationExtension", false);
+//			driver = new ChromeDriver(options);
+//		}
 	}
 
 	public void maximizeWindow() {
@@ -118,9 +142,13 @@ public class CucumberRunner extends AbstractTestNGCucumberTests {
 		return cal1;
 	}
 
-	@BeforeSuite(alwaysRun = true)
-	public void setUp() throws Exception {
-		openBrowser();
+	// @BeforeSuite(alwaysRun = true)
+	@BeforeMethod(alwaysRun = true)
+	@org.testng.annotations.Parameters(value = { "environment" })
+	@SuppressWarnings("unchecked")
+	public void setUp( @Optional("chrome") String environment) throws Exception {
+		System.out.println("passed as :- " + environment);
+		openBrowser(environment);
 		maximizeWindow();
 		implicitWait(30);
 		deleteAllCookies();
@@ -138,7 +166,7 @@ public class CucumberRunner extends AbstractTestNGCucumberTests {
 	}
 
 	@AfterMethod(alwaysRun = true)
-	public void tearDownr(ITestResult result) throws IOException {
+	public void tearDown(ITestResult result) throws IOException {
 		if (result.isSuccess()) {
 			File imageFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 			String failureImageFileName = result.getMethod().getMethodName()
@@ -160,3 +188,4 @@ public class CucumberRunner extends AbstractTestNGCucumberTests {
 		driver.quit();
 	}
 }
+

@@ -43,7 +43,8 @@ This is demo code bootstrap code with basic happy path test automation
 2. Maven installed in the system
 
 #### Run Scripts
-* Right click and run testng.xml with intellij
+* For parallel execution right click and run parallel.xml with intellij 
+* For single instance execution right click and run chrome.xml or firefox.xml
 * or run the following maven command
 
 ```

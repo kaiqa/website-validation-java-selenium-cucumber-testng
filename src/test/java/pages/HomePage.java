@@ -10,6 +10,7 @@ public class HomePage extends CucumberRunner {
 
     WebDriver driver;
     @FindBy(xpath="/html/body/header/div/nav/div[2]/nav/button/span[1]")
+
     public WebElement homePageButtonLogin;
 
     @FindBy(xpath="/html/body/div[2]/form/button")
@@ -48,7 +49,7 @@ public class HomePage extends CucumberRunner {
     @FindBy(xpath="//html/body/div[6]/section/section[4]/form/fieldset[4]/input")
     public WebElement homePageLoginFormButtonSignUp;
     // sign up end
-    @FindBy(xpath="/html/body/header/div/nav/div[2]/nav/a")
+    @FindBy(xpath="/html/body/header/div/nav/div[2]/nav/a/span")
     public WebElement homePageHeaderButtonProfile;
 
     @FindBy(xpath="/html/body/header/div/nav/nav/form/input[2]")
