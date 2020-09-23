@@ -1,9 +1,11 @@
 package stepdefinition;
 
+import com.github.javafaker.Faker;
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import cucumber.api.java.en.Given;
 import main.CucumberRunner;
@@ -31,7 +33,8 @@ public Home(){
 
 	@Given("^I click on the cookie accept button$")
 	public void I_click_on_the_cookie_accept_button() throws Throwable{
-		homePage.homePageButtonCookieAccept.click();
+		 Assert.assertTrue(homePage.homePageButtonCookieAccept.isEnabled());
+		 homePage.homePageButtonCookieAccept.click();
 	}
 	@Given("^I click on the home page login button$")
 	public void I_click_on_the_home_page_login_button() throws Throwable{
@@ -60,13 +63,17 @@ public Home(){
 		homePage.homePageLoginFormSButtonCreateAccount.click();
 	}
 
-	@Then("^I fill in the home page register form name field with \"([^\"]*)\"$")
-	public void i_fill_in_the_home_page_register_form_name_field_with(String registerName) throws Throwable {
+	@Then("^I fill in the home page register form name field")
+	public void i_fill_in_the_home_page_register_form_name_field_with() throws Throwable {
+		Faker faker = new Faker();
+		String registerName = faker.name().lastName();
 		homePage.homePageLoginFormFieldRegisterName.sendKeys(registerName);
 	}
 
-	@Then("^I fill in the home page register form email field with \"([^\"]*)\"$")
-	public void i_fill_in_the_home_page_register_form_email_field_with(String registerEmail) throws Throwable {
+	@Then("^I fill in the home page register form email field")
+	public void i_fill_in_the_home_page_register_form_email_field() throws Throwable {
+		Faker faker = new Faker();
+		String registerEmail = faker.internet().emailAddress();
 		homePage.homePageLoginFormFieldRegisterEmail.sendKeys(registerEmail);
 	}
 
@@ -92,7 +99,13 @@ public Home(){
 
 	@Given("^I click on the home page login form button login$")
 	public void I_click_on_the_home_page_login_form_button_login() throws Throwable{
+		Assert.assertTrue(homePage.homePageLoginFormFieldButtonLogin.isEnabled());
+		Actions actions = new Actions(driver);
+		actions.moveToElement(homePage.homePageLoginFormFieldButtonLogin).perform();
 		homePage.homePageLoginFormFieldButtonLogin.click();
+//		synchronized (driver)
+//		{driver.wait(2000);}
+//			homePage.homePageLoginFormFieldButtonLogin.click();
 	}
 
 	@Given("^I click on the home page profile button$")

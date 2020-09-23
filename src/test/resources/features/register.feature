@@ -8,8 +8,8 @@ Feature: Register
     And   I click on the home page login button
     Then  I click on the sign up link
     And   I click on the button create account with email
-    And   I fill in the home page register form name field with "user2"
-    And   I fill in the home page register form email field with "c9u895552e81kk6a@sharklasers.com"
+    And   I fill in the home page register form name field
+    And   I fill in the home page register form email field
     And   I fill in the home page register form password field with "asdfqwer1234"
     And   I fill in the home page register form password repeat field with "asdfqwer1234"
     And   I enable the home page register form agreement tick box

@@ -155,19 +155,19 @@ public class CucumberRunner extends AbstractTestNGCucumberTests {
 		setEnv();
 	}
 
-	@AfterClass(alwaysRun = true)
-	public void takeScreenshot() throws IOException {
-		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		File trgtFile = new File(System.getProperty("user.dir") + "//screenshots/screenshot.png");
-		trgtFile.getParentFile().mkdir();
-		trgtFile.createNewFile();
-		Files.copy(scrFile, trgtFile);
-
-	}
+//	@AfterClass(alwaysRun = true)
+//	public void takeScreenshot() throws IOException {
+//		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+//		File trgtFile = new File(System.getProperty("user.dir") + "//screenshots/screenshot.png");
+//		trgtFile.getParentFile().mkdir();
+//		trgtFile.createNewFile();
+//		Files.copy(scrFile, trgtFile);
+//
+//	}
 
 	@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult result) throws IOException {
-		if (result.isSuccess()) {
+		if (!result.isSuccess()) {
 			File imageFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 			String failureImageFileName = result.getMethod().getMethodName()
 					+ new SimpleDateFormat("MM-dd-yyyy_HH-ss").format(new GregorianCalendar().getTime()) + ".png";
@@ -175,6 +175,9 @@ public class CucumberRunner extends AbstractTestNGCucumberTests {
 			failureImageFile.getParentFile().mkdir();
 			failureImageFile.createNewFile();
 			Files.copy(imageFile, failureImageFile);
+
+			synchronized (driver)
+			{driver.quit();}
 		}
 
 	}
@@ -185,7 +188,7 @@ public class CucumberRunner extends AbstractTestNGCucumberTests {
 
 	@AfterSuite(alwaysRun = true)
 	public void quit() throws IOException, InterruptedException {
-		driver.quit();
+		synchronized (driver)
+		{driver.close();}
 	}
 }
-

@@ -17,8 +17,12 @@
         <groupId>org.seleniumhq.selenium</groupId>
         <artifactId>selenium-java</artifactId>
         <version>3.13.0</version>
-    </dependency> 
-		
+    </dependency>
+    <dependency>
+        <groupId>com.github.javafaker</groupId>
+        <artifactId>javafaker</artifactId>
+        <version>1.0.2</version>
+    </dependency>
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-java</artifactId>
@@ -30,7 +34,6 @@
       <artifactId>guava</artifactId>
       <version>25.1-jre</version>
     </dependency>
-
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-testng</artifactId>
@@ -95,10 +98,7 @@
            <artifactId>maven-surefire-plugin</artifactId>
            <version>3.0.0-M5</version>
        </dependency>
-
-
    </dependencies>
-
 </plugin>
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>

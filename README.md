@@ -30,6 +30,7 @@ This is demo code bootstrap code with basic happy path test automation
 * Dry step definition and no hard coded logic 
 
 ## Random issues
+* The login button is protected by capture module 
 * The advanced search form loses field entries on backend connection failure and does not recover.
 * Test site unresponsive
 ![report2](./images/down.png)

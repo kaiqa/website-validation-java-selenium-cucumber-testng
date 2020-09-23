@@ -7,5 +7,4 @@
             <class name="main.CucumberRunner"/>
         </classes>
     </test>
-
 </suite>

@@ -13,7 +13,8 @@ public class HomePage extends CucumberRunner {
 
     public WebElement homePageButtonLogin;
 
-    @FindBy(xpath="/html/body/div[2]/form/button")
+    // @FindBy(xpath="//div[2]/form/button")
+    @FindBy(name = "gdprChoice")
     public WebElement homePageButtonCookieAccept;
 
     @FindBy(id="email")
@@ -22,9 +23,10 @@ public class HomePage extends CucumberRunner {
     @FindBy(id="wachtwoord")
     public WebElement homePageLoginFormFieldPassword;
 
-    @FindBy(xpath="/html/body/div[6]/section/section[2]/div[1]/div/form/fieldset/ol/li[4]/input")
+   // @FindBy(xpath="/html/body/div[6]/section/section[2]/div[1]/div/form/fieldset/ol/li[4]/input")
+    @FindBy(css = "form > fieldset > ol > li.clear.clearfix.text-right > input")
     public WebElement homePageLoginFormFieldButtonLogin;
-// sign up
+
     @FindBy(xpath="//html/body/div[6]/section/section[2]/div[2]/p/button")
     public WebElement  homePageLoginFormSignUpLink;
 
@@ -49,7 +51,7 @@ public class HomePage extends CucumberRunner {
     @FindBy(xpath="//html/body/div[6]/section/section[4]/form/fieldset[4]/input")
     public WebElement homePageLoginFormButtonSignUp;
     // sign up end
-    @FindBy(xpath="/html/body/header/div/nav/div[2]/nav/a/span")
+    @FindBy(xpath="//nav/div[2]/nav/a/span")
     public WebElement homePageHeaderButtonProfile;
 
     @FindBy(xpath="/html/body/header/div/nav/nav/form/input[2]")
